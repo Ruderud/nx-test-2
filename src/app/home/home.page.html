@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let todo of todos" (click)="openNewTodo(todo.id)">
       <h2>{{todo.title}}</h2>
@@ -14,4 +14,25 @@
       </div>
     </ion-item>
   </ion-list>
+</ion-content> -->
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let index">
+      <ion-avatar slot="start">
+        <img
+          [src]="'https://picsum.photos/80/80?random=' + index"
+          alt="avatar"
+        />
+      </ion-avatar>
+      <ion-label>{{ item }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll
+    *ngIf="true"
+    position="bottom"
+    (ionInfinite)="onIonInfinite($any($event), 'top')"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
