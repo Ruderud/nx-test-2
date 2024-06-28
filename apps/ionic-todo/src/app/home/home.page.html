@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Todo List </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let todo of todos" (click)="openNewTodo(todo.id)">
+      <h2>{{todo.title}}</h2>
+      <p>{{todo.description}}</p>
+      <div *ngIf="todo.completed" slot="end">
+        <ion-icon name="checkbox-outline"></ion-icon>
+      </div>
+    </ion-item>
+    <div>dev에서 바꿈</div>
+    <div>dev-feat에서 추가</div>
+  </ion-list>
+</ion-content> -->
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let index">
+      <ion-avatar slot="start">
+        <img
+          [src]="'https://picsum.photos/80/80?random=' + index"
+          alt="avatar"
+        />
+      </ion-avatar>
+      <ion-label>{{ item }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll
+    *ngIf="true"
+    position="bottom"
+    (ionInfinite)="onIonInfinite($any($event), 'top')"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
